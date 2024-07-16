@@ -1,0 +1,19 @@
+.header {
+    background-color: #6278F7;
+    display: flex;
+    justify-content: space-between; /* Espacio entre los botones y el logo */
+    align-items: center; /* Alinea verticalmente */
+    padding: 16px; /* Espaciado interno */
+}
+
+.nav-buttons {
+    display: flex; /* Para alinear los botones horizontalmente */
+}
+
+.nav-buttons .boton {
+    margin-right: 16px; /* Espacio entre botones */
+}
+
+.logo {
+    max-width: 100px; /* Ajusta el tamaño según lo necesites */
+}

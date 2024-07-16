@@ -1,0 +1,50 @@
+.banner {
+    position: relative;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    height: 100%; /* Ajusta la altura según sea necesario */
+    overflow: hidden; /* Para evitar que el contenido sobresalga */
+}
+
+.banner-bg {
+    background-image: url('../../assets/banner3.png'); 
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px); /* Aplica desenfoque */
+    z-index: 1; /* Envía la imagen al fondo */
+}
+
+.video-info {
+    position: relative; /* Asegúrate de que el texto esté sobre el fondo */
+    z-index: 2; /* Mantiene el texto sobre el fondo borroso */
+    display: flex; /* Utiliza flexbox para disposición horizontal */
+    align-items: center; /* Centra verticalmente el contenido */
+    padding: 20px;
+}
+
+.info-left {
+    flex: 1; /* Ocupa el espacio disponible en la izquierda */
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+    padding: 20px;
+    margin-right: 20px; /* Espacio entre el texto y la imagen */
+ }
+
+.video-category {
+    font-size: 24px; /* Tamaño del título */
+    font-weight: bold; /* Negrita para el título */
+    color: #ffffff; /* Color del texto */
+}
+
+.video-description {
+    margin-top: 10px; /* Espacio entre título y descripción */
+    color: #ffffff; /* Color del texto */
+}
+
+.video-thumbnail {
+    width: 150px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+}
