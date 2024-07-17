@@ -1,5 +1,5 @@
 .header {
-    background-color: #6278F7;
+    background-color: #ffffff;
     display: flex;
     justify-content: space-between; /* Espacio entre los botones y el logo */
     align-items: center; /* Alinea verticalmente */
@@ -11,9 +11,11 @@
 }
 
 .nav-buttons .boton {
-    margin-right: 16px; /* Espacio entre botones */
+    margin-right: 16px; 
 }
 
 .logo {
-    max-width: 100px; /* Ajusta el tamaño según lo necesites */
+    max-width: 100px;
+    width: 100%; 
+    height: auto;
 }

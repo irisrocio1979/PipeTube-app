@@ -1,62 +1,92 @@
-// FormularioVideo.js
-import { useState } from "react";
-import "./FormularioVideo.css";
+import { useState } from "react"
+import "./FormularioVideo.css"
+import Campo from "../Campo"
+import ListaOpciones from "../ListaOpciones"
+import Boton from "../Boton"
 
-const FormularioVideo = ({ agregarNuevoVideo }) => {
-    const [titulo, setTitulo] = useState("");
-    const [categoria, setCategoria] = useState("");
-    const [descripcion, setDescripcion] = useState("");
-    const [imagen, setImagen] = useState("");
+const Formulario = (props) => {
+
+    const [nombre, actualizarNombre] = useState("")
+    const [puesto, actualizarPuesto] = useState("")
+    const [foto, actualizarFoto] = useState("")
+    const [equipo, actualizarEquipo] = useState("")
+
+    const [titulo, actualizarTitulo] = useState("")
+    const [color, actualizarColor] = useState("")
+
+    const { registrarColaborador, crearEquipo } = props
 
     const manejarEnvio = (e) => {
-        e.preventDefault();
-        const nuevoVideo = {
-            title: titulo,
-            category: categoria,
-            description: descripcion,
-            image: imagen
-        };
-        agregarNuevoVideo(nuevoVideo);
-        setTitulo("");
-        setCategoria("");
-        setDescripcion("");
-        setImagen("");
+        e.preventDefault()
+        console.log("Manejar el envio")
+        let datosAEnviar = {
+            nombre,
+            puesto,
+            foto,
+            equipo
+        }
+        registrarColaborador(datosAEnviar)
     }
 
-    return (
-        <form className="formulario-video" onSubmit={manejarEnvio}>
-            <h2>Agregar Nuevo Video</h2>
-            <input 
-                type="text" 
-                placeholder="Título" 
-                value={titulo} 
-                onChange={(e) => setTitulo(e.target.value)} 
-                required 
+    const manejarNuevoEquipo = (e) => {
+        e.preventDefault()
+        crearEquipo({ titulo, colorPrimario: color })
+    }
+
+
+    return <section className="formulario">
+        <form onSubmit={manejarEnvio}>
+            <h2>Rellena el formulario para crear el colaborador.</h2>
+            <Campo
+                titulo="Nombre"
+                placeholder="Ingresar nombre"
+                required
+                valor={nombre}
+                actualizarValor={actualizarNombre}
             />
-            <input 
-                type="text" 
-                placeholder="Categoría" 
-                value={categoria} 
-                onChange={(e) => setCategoria(e.target.value)} 
-                required 
+            <Campo
+                titulo="Puesto"
+                placeholder="Ingresar puesto"
+                required
+                valor={puesto}
+                actualizarValor={actualizarPuesto}
             />
-            <input 
-                type="text" 
-                placeholder="Descripción" 
-                value={descripcion} 
-                onChange={(e) => setDescripcion(e.target.value)} 
-                required 
+            <Campo
+                titulo="Foto"
+                placeholder="Ingresar enlace de foto"
+                required
+                valor={foto}
+                actualizarValor={actualizarFoto}
             />
-            <input 
-                type="text" 
-                placeholder="URL de la Imagen" 
-                value={imagen} 
-                onChange={(e) => setImagen(e.target.value)} 
-                required 
+            <ListaOpciones
+                valor={equipo}
+                actualizarEquipo={actualizarEquipo}
+                equipos={props.equipos}
             />
-            <button type="submit">Agregar Video</button>
+            <Boton>
+                Crear
+            </Boton>
         </form>
-    );
+        <form onSubmit={manejarNuevoEquipo}>
+            <h2>Rellena el formulario para crear el equipo.</h2>
+            <Campo
+                titulo="Titulo"
+                placeholder="Ingresar titulo"
+                required
+                valor={titulo}
+                actualizarValor={actualizarTitulo}
+            />
+            <Campo
+                titulo="Color"
+                placeholder="Ingresar el color en Hex"
+                required
+                valor={color}
+                actualizarValor={actualizarColor}
+                type="color"
+            />
+            <Boton>Registrar equipo</Boton>
+        </form>
+    </section>
 }
 
-export default FormularioVideo;
+export default Formulario

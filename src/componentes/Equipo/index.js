@@ -1,4 +1,4 @@
-import "./Equipo.css"
+import "./Categoria.css"
 import Colaborador from "../Colaborador"
 import hexToRgba from 'hex-to-rgba';
 

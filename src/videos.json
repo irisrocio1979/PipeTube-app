@@ -1,0 +1,20 @@
+[
+    {
+      "id": "uuid-1",
+      "equipo": "Front End",
+      "foto": "https://github.com/harlandlohora.png",
+      "nombre": "Harland Lohora",
+      "puesto": "Instructor",
+      "fav": true
+    },
+    {
+      "id": "uuid-2",
+      "equipo": "Programación",
+      "foto": "https://github.com/genesysaluralatam.png",
+      "nombre": "Genesys Rondón",
+      "puesto": "Desarrolladora de software e instructora",
+      "fav": false
+    }
+    // ... más colaboradores
+  ]
+  

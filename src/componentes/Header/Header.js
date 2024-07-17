@@ -1,13 +1,15 @@
+import { useState } from "react"
 import "./Header.css";
-import Boton from "../Boton"; // Asegúrate de que la ruta sea correcta
+import Boton from "../Boton";
 
-function Header({ cambiarMostrarFormularioVideo }) {
+const Header = (props) => {
+    console.log(props)
     return (
         <header className="header">
             <img src="logo.png" alt="Org" className="logo" />
             <div className="nav-buttons">
                 <Boton>Home</Boton>
-                <Boton onClick={cambiarMostrarFormularioVideo}>Nuevo Video</Boton>
+                <Boton alt="add" onClick={props.cambiarMostrar}>Nuevo Video</Boton>
             </div>
         </header>
     );

@@ -1,0 +1,41 @@
+.editar-video-formulario {
+    background-color: #f9f9f9; /* Fondo suave */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    max-width: 400px; /* Ancho máximo */
+    margin: 20px auto; /* Centrado */
+    font-family: Arial, sans-serif; /* Tipografía */
+}
+
+.editar-video-formulario h2 {
+    text-align: center; /* Centrar el título */
+    color: #333; /* Color del texto */
+    font-size: 2.5vw; /* Tamaño adaptativo basado en el ancho de la ventana */
+    margin-bottom: 20px; 
+}
+
+.editar-video-formulario input {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    margin: 10px 0; /* Espaciado vertical */
+    border: 1px solid #ccc; /* Borde suave */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+.editar-video-formulario button {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    margin: 10px 0; /* Espaciado vertical */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.editar-video-formulario button:hover {
+    background-color: #57C278; /* Color de fondo al pasar el ratón */
+    color: white; /* Color del texto */
+}

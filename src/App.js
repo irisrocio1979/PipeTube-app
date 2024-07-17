@@ -3,14 +3,13 @@ import { v4 as uuid } from "uuid"
 import './App.css';
 import Header from "./componentes/Header/Header"
 import Formulario from './componentes/Formulario/Formulario';
-import FormularioVideo from './componentes/FormularioVideo';
+import Banner from './componentes/Banner';
 import MiOrg from './componentes/MiOrg';
 import Equipo from './componentes/Equipo';
 import Footer from './componentes/Footer';
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false);
-  const [mostrarFormularioVideo, setMostrarFormularioVideo] = useState(false);
   const [colaboradores, actualizarColaboradores] = useState([{
     id: uuid(),
     equipo: "Front End",
@@ -97,6 +96,9 @@ function App() {
     }
   ])
 
+  const lastVideo = equipos[equipos.length - 1]; 
+
+  
 
   //Ternario --> condicion ? seMuestra : noSeMuestra
   // condicion && seMuestra
@@ -105,9 +107,7 @@ function App() {
     actualizarMostrar(!mostrarFormulario)
   }
 
-  const cambiarMostrarFormularioVideo = () => {
-    setMostrarFormularioVideo(!mostrarFormularioVideo); // Nueva función
-  };
+
 
   //Registrar colaborador
 
@@ -156,10 +156,23 @@ function App() {
     actualizarColaboradores(colaboradoresActualizados)
   }
 
+  const editarColaborador = (id, datosActualizados) => {
+    console.log("Editar colaborador", id, datosActualizados);
+    const colaboradoresActualizados = colaboradores.map((colaborador) => {
+        if (colaborador.id === id) {
+            return { ...colaborador, ...datosActualizados };
+        }
+        return colaborador;
+    });
+    actualizarColaboradores(colaboradoresActualizados);
+}
+
+
 
   return (
     <div>
-      <Header cambiarMostrarFormularioVideo={cambiarMostrarFormularioVideo}/>
+      <Header cambiarMostrar={cambiarMostrar}/>
+      <Banner video={lastVideo} />
       {/* {mostrarFormulario ? <Formulario /> : <></>} */}
       {
         mostrarFormulario && <Formulario
@@ -169,13 +182,10 @@ function App() {
         />
       }
 
-      {
-        mostrarFormularioVideo && <FormularioVideo
-          // Propiedades necesarias para FormularioVideo
-        />
-      }
+      
+      <MiOrg />
 
-      <MiOrg cambiarMostrar={cambiarMostrar} />
+      
 
       {
         equipos.map((equipo) => <Equipo
@@ -185,6 +195,7 @@ function App() {
           eliminarColaborador={eliminarColaborador}
           actualizarColor={actualizarColor}
           like={like}
+          editarColaborador={editarColaborador}
         />
         )
       }

@@ -8,10 +8,10 @@ const Banner = ({ video }) => {
             <div className="banner-bg"></div>
             <div className="video-info">
                 <div className="info-left">
-                    <h2 className="video-category">{video.category}</h2>
-                    <p className="video-description">{video.description}</p>
+                    <h2 className="video-category">{video.equipo}</h2>
+                    <p className="video-description">{video.nombre} - {video.puesto}</p>
                 </div>
-                <img src={video.image} alt="Video Thumbnail" className="video-thumbnail" />
+                <img src={video.foto} alt="Video Thumbnail" className="video-thumbnail" />
             </div>
         </div>
     );

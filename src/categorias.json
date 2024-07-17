@@ -1,0 +1,16 @@
+[
+    {
+      "id": "uuid-1",
+      "titulo": "Programación",
+      "colorPrimario": "#57C278",
+      "colorSecundario": "#D9F7E9"
+    },
+    {
+      "id": "uuid-2",
+      "titulo": "Front End",
+      "colorPrimario": "#82CFFA",
+      "colorSecundario": "#E8F8FF"
+    }
+    // ... más equipos
+  ]
+  
