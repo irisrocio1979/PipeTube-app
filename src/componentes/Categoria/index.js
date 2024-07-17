@@ -1,11 +1,11 @@
 import "./Categoria.css"
-import Colaborador from "../Colaborador"
+import Video from "../Video"
 import hexToRgba from 'hex-to-rgba';
 
-const Equipo = (props) => {
+const Categoria = (props) => {
     //Destructuracion
     const { colorPrimario, colorSecundario, titulo, id } = props.datos
-    const { colaboradores, eliminarColaborador, actualizarColor, like } = props
+    const { videos, eliminarVideo, actualizarColor, like, editarVideo  } = props
     const obj = {
         backgroundColor: hexToRgba(colorPrimario, 0.6)
     }
@@ -15,8 +15,8 @@ const Equipo = (props) => {
 
     return <>
         {
-            colaboradores.length > 0 &&
-            <section className="equipo" style={obj}>
+            videos.length > 0 &&
+            <section className="categoria" style={obj}>
                 <input
                     type='color'
                     className="input-color"
@@ -26,14 +26,15 @@ const Equipo = (props) => {
                     }}
                 />
                 <h3 style={estiloTitulo} >{titulo}</h3>
-                <div className="colaboradores">
+                <div className="videos">
                     {
-                        colaboradores.map((colaborador, index) => <Colaborador
-                            datos={colaborador}
+                        videos.map((video, index) => <Video
+                            datos={video}
                             key={index}
                             colorPrimario={colorPrimario}
-                            eliminarColaborador={eliminarColaborador}
+                            eliminarVideo={eliminarVideo}
                             like={like}
+                            editarVideo={editarVideo}
                         />)
                     }
                 </div>
@@ -42,4 +43,4 @@ const Equipo = (props) => {
     </>
 }
 
-export default Equipo
+export default Categoria

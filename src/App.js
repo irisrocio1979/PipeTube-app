@@ -5,53 +5,86 @@ import Header from "./componentes/Header/Header"
 import Formulario from './componentes/Formulario/Formulario';
 import Banner from './componentes/Banner';
 import MiOrg from './componentes/MiOrg';
-import Equipo from './componentes/Equipo';
+import Categoria from './componentes/Categoria';
 import Footer from './componentes/Footer';
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false);
-  const [colaboradores, actualizarColaboradores] = useState([{
+  const [videos, actualizarVideos] = useState([{
     id: uuid(),
-    equipo: "Front End",
-    foto: "https://github.com/harlandlohora.png",
-    nombre: "Harland Lohora",
-    puesto: "Instructor",
-    fav: true
-  },
-  {
-    id: uuid(),
-    equipo: "Programación",
-    foto: "https://github.com/genesysaluralatam.png",
-    nombre: "Genesys Rondón",
-    puesto: "Desarrolladora de software e instructora",
-    fav: false
-  },
-  {
-    id: uuid(),
-    equipo: "UX y Diseño",
-    foto: "https://github.com/JeanmarieAluraLatam.png",
-    nombre: "Jeanmarie Quijada",
-    puesto: "Instructora en Alura Latam",
-    fav: false
-  },
-  {
-    id: uuid(),
-    equipo: "Programación",
-    foto: "https://github.com/christianpva.png",
-    nombre: "Christian Velasco",
-    puesto: "Head de Alura e Instructor",
-    fav: false
-  },
-  {
-    id: uuid(),
-    equipo: "Innovación y Gestión",
-    foto: "https://github.com/JoseDarioGonzalezCha.png",
-    nombre: "Jose Gonzalez",
-    puesto: "Dev FullStack",
-    fav: false
+      categoria: "Machine Learning",
+      urlImagen: "https://img.youtube.com/vi/8Ht3ATIEwDs/0.jpg",
+      urlVideo: "https://www.youtube.com/embed/8Ht3ATIEwDs",
+      titulo: "Transformers Tutorial",
+      descripcion: "Paper Explained + Implementation in Tensorflow and Pytorch",
+      fav: true
+    },
+    {
+      id: uuid(),
+      categoria: "Magic Leap",
+      urlImagen: "https://img.youtube.com/vi/ZuTkhHBLYnk/0.jpg",
+      urlVideo: "https://www.youtube.com/embed/ZuTkhHBLYnk",
+      titulo: "Magic Leap Development",
+      descripcion: "Magic Leap Development with Unity3d and porting an existing non-AR game to the Magic Leap platform",
+      fav: false
+    },
+    {
+      id: uuid(),
+      categoria: "AWS",
+      urlImagen: "https://img.youtube.com/vi/CezYbKuGReo/0.jpg",
+      urlVideo: "https://www.youtube.com/embed/CezYbKuGReo",
+      titulo: "Probando LocalStack - Una nube en tu local",
+      descripcion: "Aprendiendo sobre LocalStack",
+      fav: false
+    },
+    {
+      id: uuid(),
+      categoria: "AWS",
+      urlImagen: "https://img.youtube.com/vi/-NvSELHqJIc/0.jpg",
+      urlVideo: "https://www.youtube.com/embed/-NvSELHqJIc",
+      titulo: "AWS EventBridge Pipe",
+      descripcion: "EventBridge Pipes is a new feature introduced by AWS in 2021",
+      fav: false
+    },
+    {
+      id: uuid(),
+      categoria: "Programación",
+      urlImagen: "https://img.youtube.com/vi/TTMxxwRyQQE/0.jpg",
+      urlVideo: "https://www.youtube.com/embed/TTMxxwRyQQE",
+      titulo: "¿COMO INICIAR EN LA PROGRAMACION COMPETITIVA?",
+      descripcion: "Cómo comenzar en la programción competitiva",
+      fav: false
+    },
+    {
+      id: uuid(),
+      categoria: "Machine Learning",
+      urlImagen: "https://img.youtube.com/vi/6CkSmwVDpzA/0.jpg",
+      urlVideo: "https://www.youtube.com/embed/6CkSmwVDpzA",
+      titulo: "Reconociendo Rostros",
+      descripcion: "Implementación con Amazon Rekognition",
+      fav: false
+    },
+    {
+      id: uuid(),
+      categoria: "UX y Diseño",
+      urlImagen: "https://img.youtube.com/vi/lYWOzxVCTao/0.jpg",
+      urlVideo: "https://www.youtube.com/embed/lYWOzxVCTao",
+      titulo: "¿Qué es UX Desingn?",
+      descripcion: "Diseño de experiencia de Usuario",
+      fav: false
+    },
+    {
+      id: uuid(),
+      categoria: "Móvil",
+      urlImagen: "https://img.youtube.com/vi/O0B_3Wkfths/0.jpg",
+      urlVideo: "https://www.youtube.com/embed/O0B_3Wkfths",
+      titulo: "DESARROLLADOR de APPS MOBILE",
+      descripcion: "Así es ser DESARROLLADOR de APPS MOBILE ¿Cuánto puedes ganar? Desarrollador de Aplicaciones",
+      fav: false
+    
   }])
 
-  const [equipos, actualizarEquipos] = useState([
+  const [categorias, actualizarCategorias] = useState([
     {
       id: uuid(),
       titulo: "Programación",
@@ -66,13 +99,13 @@ function App() {
     },
     {
       id: uuid(),
-      titulo: "Data Science",
+      titulo: "AWS",
       colorPrimario: "#A6D157",
       colorSecundario: "#F0F8E2"
     },
     {
       id: uuid(),
-      titulo: "Devops",
+      titulo: "Machine Learning",
       colorPrimario: "#E06B69",
       colorSecundario: "#FDE7E8"
     },
@@ -90,13 +123,13 @@ function App() {
     },
     {
       id: uuid(),
-      titulo: "Innovación y Gestión",
+      titulo: "Magic Leap",
       colorPrimario: "#FF8A29",
       colorSecundario: "#FFEEDF"
     }
   ])
 
-  const lastVideo = equipos[equipos.length - 1]; 
+  const lastVideo = videos[videos.length - 1]; 
 
   
 
@@ -111,61 +144,58 @@ function App() {
 
   //Registrar colaborador
 
-  const registrarColaborador = (colaborador) => {
-    console.log("Nuevo colaborador", colaborador)
+  const registrarVideo = (video) => {
+    console.log("Nuevo video", video)
     //Spread operator
-    actualizarColaboradores([...colaboradores, colaborador])
+    actualizarVideos([...videos, video])
   }
 
   //Eliminar colaborador
-  const eliminarColaborador = (id) => {
-    console.log("Eliminar colaborador", id)
-    const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id !== id)
-    actualizarColaboradores(nuevosColaboradores)
+  const  eliminarVideo  = (id) => {
+    console.log("Eliminar video", id)
+    const nuevosVideos = videos.filter((video) => video.id !== id);
+    actualizarVideos(nuevosVideos);
   }
 
-  //Actualizar color de equipo
+  //Actualizar color de Categoria
   const actualizarColor = (color, id) => {
     console.log("Actualizar: ", color, id)
-    const equiposActualizados = equipos.map((equipo) => {
-      if (equipo.id === id) {
-        equipo.colorPrimario = color
+    const categoriasActualizadas = categorias.map((categoria) => {
+      if (categoria.id === id) {
+        categoria.colorPrimario = color;
       }
-
-      return equipo
-    })
-
-    actualizarEquipos(equiposActualizados)
+      return categoria;
+    });
+    actualizarCategorias(categoriasActualizadas);
   }
 
-  //Crear equipo
-  const crearEquipo = (nuevoEquipo) => {
-    console.log(nuevoEquipo)
-    actualizarEquipos([...equipos, { ...nuevoEquipo, id: uuid() }])
+  //Crear categoria
+  const crearCategoria = (nuevaCategoria) => {
+    console.log(nuevaCategoria)
+    actualizarCategorias([...categorias, { ...nuevaCategoria, id: uuid() }]);
   }
 
   const like = (id) => {
     console.log("like", id)
-    const colaboradoresActualizados = colaboradores.map((colaborador) => {
-      if (colaborador.id === id) {
-        colaborador.fav = !colaborador.fav
+    const videosActualizados = videos.map((video) => {
+      if (video.id === id) {
+        video.fav = !video.fav
       }
-      return colaborador
+      return video
     })
 
-    actualizarColaboradores(colaboradoresActualizados)
+    actualizarVideos(videosActualizados)
   }
 
-  const editarColaborador = (id, datosActualizados) => {
-    console.log("Editar colaborador", id, datosActualizados);
-    const colaboradoresActualizados = colaboradores.map((colaborador) => {
-        if (colaborador.id === id) {
-            return { ...colaborador, ...datosActualizados };
-        }
-        return colaborador;
+  const editarVideo = (id, datosActualizados) => {
+    const videosActualizados = videos.map((video) => {
+      if (video.id === id) {
+        return { ...video, ...datosActualizados };
+      }
+      return video;
     });
-    actualizarColaboradores(colaboradoresActualizados);
-}
+    actualizarVideos(videosActualizados);
+  }
 
 
 
@@ -176,9 +206,9 @@ function App() {
       {/* {mostrarFormulario ? <Formulario /> : <></>} */}
       {
         mostrarFormulario && <Formulario
-          equipos={equipos.map((equipo) => equipo.titulo)}
-          registrarColaborador={registrarColaborador}
-          crearEquipo={crearEquipo}
+          categorias={categorias.map((categoria) => categoria.titulo)}
+          registrarVideo={registrarVideo}
+          crearCategoria={crearCategoria}
         />
       }
 
@@ -188,14 +218,14 @@ function App() {
       
 
       {
-        equipos.map((equipo) => <Equipo
-          datos={equipo}
-          key={equipo.titulo}
-          colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
-          eliminarColaborador={eliminarColaborador}
+        categorias.map((categoria) => <Categoria
+          datos={categoria}
+          key={categoria.titulo}
+          videos={videos.filter(video => video.categoria === categoria.titulo)}
+          eliminarVideo={eliminarVideo}
           actualizarColor={actualizarColor}
           like={like}
-          editarColaborador={editarColaborador}
+          editarVideo={editarVideo}
         />
         )
       }

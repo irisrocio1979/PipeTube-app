@@ -7,15 +7,25 @@ const Banner = ({ video }) => {
         <div className="banner">
             <div className="banner-bg"></div>
             <div className="video-info">
-                <div className="info-left">
-                    <h2 className="video-category">{video.equipo}</h2>
-                    <p className="video-description">{video.nombre} - {video.puesto}</p>
+                <div className="info-text">
+                    <div className="info-box category-box">
+                        <h2 className="video-category">{video.categoria}</h2>
+                    </div>
+                    <div className="info-box description-box">
+                        <p className="video-description">{video.descripcion}</p>
+                    </div>
                 </div>
-                <img src={video.foto} alt="Video Thumbnail" className="video-thumbnail" />
+                <div className="video-container">
+                    <iframe 
+                        className="video-frame" 
+                        src={video.urlVideo} 
+                        title={video.titulo}
+                        allowFullScreen>
+                    </iframe>
+                </div>
             </div>
         </div>
     );
 };
 
 export default Banner;
-

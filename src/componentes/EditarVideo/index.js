@@ -5,29 +5,32 @@ import ListaOpciones from "../ListaOpciones"
 import Boton from "../Boton"
 
 
-const EditarVideo = ({ id, nombre, puesto, foto, equipo, onClose, onSave }) => {
-    const [nuevoNombre, setNuevoNombre] = useState(nombre);
-    const [nuevoPuesto, setNuevoPuesto] = useState(puesto);
-    const [nuevaFoto, setNuevaFoto] = useState(foto);
-    const [nuevoEquipo, setNuevoEquipo] = useState(equipo);
+const EditarVideo = ({ id, titulo, categoria, urlImagen, urlVideo, descripcion, onClose, onSave }) => {
+    const [nuevoTitulo, setNuevoTitulo] = useState(titulo);
+    const [nuevaCategoria, setNuevaCategoria] = useState(categoria);
+    const [nuevaUrlImagen, setNuevaUrlImagen] = useState(urlImagen);
+    const [nuevaUrlVideo, setNuevaUrlVideo] = useState(urlVideo);
+    const [nuevaDescripcion, setNuevaDescripcion] = useState(descripcion);
 
     const handleSave = () => {
         onSave(id, {
-            nombre: nuevoNombre,
-            puesto: nuevoPuesto,
-            foto: nuevaFoto,
-            equipo: nuevoEquipo
+            titulo: nuevoTitulo,
+            categoria: nuevaCategoria,
+            urlImagen: nuevaUrlImagen,
+            urlVideo: nuevaUrlVideo,
+            descripcion: nuevaDescripcion
         });
         onClose();
     }
 
     return (
         <div className="editar-video-formulario">
-            <h2>Editar Colaborador</h2>
-            <input type="text" value={nuevoNombre} onChange={(e) => setNuevoNombre(e.target.value)} />
-            <input type="text" value={nuevoPuesto} onChange={(e) => setNuevoPuesto(e.target.value)} />
-            <input type="text" value={nuevaFoto} onChange={(e) => setNuevaFoto(e.target.value)} />
-            <input type="text" value={nuevoEquipo} onChange={(e) => setNuevoEquipo(e.target.value)} />
+            <h2>Editar Video</h2>
+            <input type="text" value={nuevoTitulo} onChange={(e) => setNuevoTitulo(e.target.value)} />
+            <input type="text" value={nuevaCategoria} onChange={(e) => setNuevaCategoria(e.target.value)} />
+            <input type="text" value={nuevaUrlImagen} onChange={(e) => setNuevaUrlImagen(e.target.value)} />
+            <input type="text" value={nuevaUrlVideo} onChange={(e) => setNuevaUrlVideo(e.target.value)} />
+            <input type="text" value={nuevaDescripcion} onChange={(e) => setNuevaDescripcion(e.target.value)} />
             <button onClick={handleSave}>Guardar</button>
             <button onClick={onClose}>Cancelar</button>
         </div>

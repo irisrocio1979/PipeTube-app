@@ -9,14 +9,14 @@ const ListaOpciones = (props) => {
 
     const manejarCambio = (e) => {
         console.log("cambio", e.target.value)
-        props.actualizarEquipo(e.target.value)
+        props.actualizarCategoria(e.target.value)
     }
 
     return <div className="lista-opciones">
-        <label>Equipos</label>
+        <label>Categorias</label>
         <select value={props.valor} onChange={manejarCambio}>
-            <option value="" disabled defaultValue="" hidden>Seleccionar equipo</option>
-            {props.equipos.map((equipo, index) => <option key={index} value={equipo}>{equipo}</option>)}
+            <option value="" disabled defaultValue="" hidden>Seleccionar categoria</option>
+            {props.categorias.map((categoria, index) => <option key={index} value={categoria}>{categoria}</option>)}
         </select>
     </div>
 }

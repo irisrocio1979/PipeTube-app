@@ -6,75 +6,84 @@ import Boton from "../Boton"
 
 const Formulario = (props) => {
 
-    const [nombre, actualizarNombre] = useState("")
-    const [puesto, actualizarPuesto] = useState("")
-    const [foto, actualizarFoto] = useState("")
-    const [equipo, actualizarEquipo] = useState("")
+    const [titulo, actualizarTitulo] = useState("");
+    const [categoria, actualizarCategoria] = useState("");
+    const [urlImagen, actualizarUrlImagen] = useState("");
+    const [urlVideo, actualizarUrlVideo] = useState("");
+    const [descripcion, actualizarDescripcion] = useState("");
 
-    const [titulo, actualizarTitulo] = useState("")
+    const [tituloCategoria, actualizarTituloCategoria] = useState("");
     const [color, actualizarColor] = useState("")
 
-    const { registrarColaborador, crearEquipo } = props
+    const { registrarVideo, crearCategoria } = props
 
     const manejarEnvio = (e) => {
         e.preventDefault()
         console.log("Manejar el envio")
         let datosAEnviar = {
-            nombre,
-            puesto,
-            foto,
-            equipo
+            titulo,
+            categoria,
+            urlImagen,
+            urlVideo,
+            descripcion
         }
-        registrarColaborador(datosAEnviar)
+        registrarVideo(datosAEnviar)
     }
 
-    const manejarNuevoEquipo = (e) => {
+    const manejarNuevoCategoria = (e) => {
         e.preventDefault()
-        crearEquipo({ titulo, colorPrimario: color })
+        crearCategoria({ tituloCategoria, colorPrimario: color })
     }
 
 
     return <section className="formulario">
         <form onSubmit={manejarEnvio}>
-            <h2>Rellena el formulario para crear el colaborador.</h2>
+            <h2>Registrar nuevo Video</h2>
             <Campo
-                titulo="Nombre"
-                placeholder="Ingresar nombre"
+                titulo="Título"
+                placeholder="Ingresar título"
                 required
-                valor={nombre}
-                actualizarValor={actualizarNombre}
+                valor={titulo}
+                actualizarValor={actualizarTitulo}
             />
             <Campo
-                titulo="Puesto"
-                placeholder="Ingresar puesto"
+                titulo="URL de Imagen"
+                placeholder="Ingresar URL de la imagen"
                 required
-                valor={puesto}
-                actualizarValor={actualizarPuesto}
+                valor={urlImagen}
+                actualizarValor={actualizarUrlImagen}
             />
             <Campo
-                titulo="Foto"
-                placeholder="Ingresar enlace de foto"
+                titulo="URL del Video"
+                placeholder="Ingresar URL del video"
                 required
-                valor={foto}
-                actualizarValor={actualizarFoto}
+                valor={urlVideo}
+                actualizarValor={actualizarUrlVideo}
             />
+            <Campo
+                    titulo="Descripción"
+                    placeholder="Ingresar descripción"
+                    required
+                    valor={descripcion}
+                    actualizarValor={actualizarDescripcion}
+            /> 
             <ListaOpciones
-                valor={equipo}
-                actualizarEquipo={actualizarEquipo}
-                equipos={props.equipos}
+                valor={categoria}
+                actualizarValor={actualizarCategoria}
+                categorias={props.categorias}
             />
             <Boton>
                 Crear
             </Boton>
         </form>
-        <form onSubmit={manejarNuevoEquipo}>
-            <h2>Rellena el formulario para crear el equipo.</h2>
+        <form onSubmit={manejarNuevoCategoria}>
+            <h2>Registrar nueva categoría</h2>
             <Campo
-                titulo="Titulo"
-                placeholder="Ingresar titulo"
+                titulo="Título de la Categoría"
+                placeholder="Ingresar título"
                 required
-                valor={titulo}
-                actualizarValor={actualizarTitulo}
+                valor={tituloCategoria}
+                actualizarValor={actualizarTituloCategoria}
             />
             <Campo
                 titulo="Color"
@@ -84,7 +93,7 @@ const Formulario = (props) => {
                 actualizarValor={actualizarColor}
                 type="color"
             />
-            <Boton>Registrar equipo</Boton>
+            <Boton>Registrar categoria</Boton>
         </form>
     </section>
 }

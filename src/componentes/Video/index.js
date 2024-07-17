@@ -1,21 +1,19 @@
 import { useState } from "react";
 import "./Video.css";
-import EditarVideo from "../EditarVideo"; // Asegúrate de tener esta importación
+import EditarVideo from "../EditarVideo"; 
 import { AiFillCloseCircle, AiOutlineHeart, AiFillHeart, AiFillEdit } from "react-icons/ai";
 
-const Colaborador = (props) => {
-    const { nombre, puesto, foto, equipo, id, fav, editarColaborador } = props.datos;
-    const { colorPrimario, eliminarColaborador, like } = props;
+const Video = (props) => {
+    const {titulo, categoria, urlImagen, urlVideo, descripcion, id, fav, editarVideo } = props.datos;
+    const { colorPrimario, eliminarVideo, like } = props;
 
     const [isEditing, setIsEditing] = useState(false);
 
     const handleSave = (datosActualizados) => {
-        console.log("Editar Colaborador en Colaborador:", editarColaborador);
-
-        if (typeof editarColaborador === 'function') {
-            editarColaborador(id, datosActualizados); // Verifica que esto se llame correctamente
+        if (typeof editarVideo === 'function') {
+            editarVideo(id, datosActualizados); 
         } else {
-            console.error("editarColaborador no es una función");
+            console.error("editarVideo no es una función");
         }
     };
 
@@ -23,30 +21,33 @@ const Colaborador = (props) => {
         <div className="video">
             {fav ? <AiFillHeart color="red" className="favorito" onClick={() => like(id)} /> : <AiOutlineHeart className="favorito" onClick={() => like(id)} />}
             <div className="encabezado" style={{ backgroundColor: colorPrimario }}>
-                <img src={foto} alt={nombre} />
+                <a href={urlVideo} target="_blank" rel="noopener noreferrer">
+                    <img src={urlImagen} alt={titulo} />
+                </a>
             </div>
             <div className="info">
                 {isEditing ? (
                     <EditarVideo
                         id={id}
-                        nombre={nombre}
-                        puesto={puesto}
-                        foto={foto}
-                        equipo={equipo}
+                        titulo={titulo}
+                        categoria={categoria}
+                        urlImagen={urlImagen}
+                        urlVideo={urlVideo}
+                        descripcion={descripcion}
                         onClose={() => setIsEditing(false)}
                         onSave={handleSave}
                     />
                 ) : (
                     <>
-                        <h4>{nombre}</h4>
-                        <h5>{puesto}</h5>
+                        <h4>{titulo}</h4>
+                        <p>{descripcion}</p>
                     </>
                 )}
                 <div className="acciones">
                     <span onClick={() => setIsEditing(true)} className="accion">
                         <AiFillEdit /> EDITAR
                     </span>
-                    <span onClick={() => eliminarColaborador(id)} className="accion">
+                    <span onClick={() => eliminarVideo(id)} className="accion">
                         <AiFillCloseCircle /> ELIMINAR
                     </span>
                 </div>
@@ -55,4 +56,4 @@ const Colaborador = (props) => {
     );
 };
 
-export default Colaborador;
+export default Video;

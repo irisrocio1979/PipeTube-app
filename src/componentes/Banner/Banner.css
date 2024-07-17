@@ -1,8 +1,9 @@
 .banner {
     position: relative;
-    width: 100%; /* Asegura que ocupe todo el ancho */
-    height: 400px; /* Ajusta la altura según sea necesario */
-    overflow: hidden; /* Para evitar que el contenido sobresalga */
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
 }
 
 .banner-bg {
@@ -14,37 +15,81 @@
     left: 0;
     width: 100%;
     height: 100%;
-    filter: blur(1px); /* Aplica desenfoque */
-    z-index: 1; /* Envía la imagen al fondo */
+    filter: blur(2px);
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+.banner:hover .banner-bg {
+    transform: scale(1.05);
 }
 
 .video-info {
-    position: relative; /* Asegúrate de que el texto esté sobre el fondo */
-    z-index: 2; /* Mantiene el texto sobre el fondo borroso */
-    display: flex; /* Utiliza flexbox para disposición horizontal */
-    align-items: center; /* Centra verticalmente el contenido */
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.info-left {
-    flex: 1; /* Ocupa el espacio disponible en la izquierda */
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+.info-text {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.info-box {
     padding: 20px;
-    margin-right: 20px; /* Espacio entre el texto y la imagen */
- }
-
-.video-category {
-    font-size: 24px; /* Tamaño del título */
-    font-weight: bold; /* Negrita para el título */
-    color: #ffffff; /* Color del texto */
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-.video-description {
-    margin-top: 10px; /* Espacio entre título y descripción */
-    color: #ffffff; /* Color del texto */
+.category-box {
+    background-color: #6278F7;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
 }
 
-.video-thumbnail {
-    width: 150px; /* Ajusta el tamaño según sea necesario */
-    height: auto;
+.description-box {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 18px;
+}
+
+.video-container {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    aspect-ratio: 16 / 9; /* Mantiene el aspecto del video */
+}
+
+@media (max-width: 768px) {
+    .video-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-text {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .video-container {
+        width: 100%;
+    }
 }
